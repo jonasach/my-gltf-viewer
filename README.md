@@ -15,17 +15,22 @@ These instructions assume that the following utilities are installed: git, npm, 
 1. Create a heroku app for your project: `cd my-gltf-viewer && heroku create`. Note the URL provided in the output of this command.
 1. Go to the [Onshape Developer Portal](https://dev-portal.onshape.com/), create a new OAuth Application and Store entry with the following settings. Make sure that you copy the Client ID and Client Secret, as these will be needed later, and cannot be shown again.
 
+
+https://shielded-caverns-95967-5b91b982a51c.herokuapp.com/ | 
+https://git.heroku.com/shielded-caverns-95967.git
+
+
 OAuth Application Setting | Value
 ------------------------- | -----
-Redirect URL | https://<url-from-heroku-create.herokuapp.com>/oauthRedirect
-OAuth URL | https://<url-from-heroku-create.herokuapp.com>/oauthSignin
+Redirect URL | https://shielded-caverns-95967-5b91b982a51c.herokuapp.com/oauthRedirect
+OAuth URL | https://shielded-caverns-95967-5b91b982a51c/oauthSignin
 7. Update the `package.json` file with your new Heroku application URL:
 ```json
 {
   ...
   "repository": {
     "type": "git",
-    "url": “https://<url-from-heroku-create.herokuapp.com>”
+    "url": "https://shielded-caverns-95967-5b91b982a51c.herokuapp.com"
   },
   ...
 }
@@ -34,18 +39,18 @@ OAuth URL | https://<url-from-heroku-create.herokuapp.com>/oauthSignin
 	- Name: `<Enter extension name>`
 	- Description(Optional): `<Enter extension description>`
 	- Location: `Element Tab`
-	- Action URL: `https://<url-from-heroku-create.herokuapp.com>
+	- Action URL: `https://https://shielded-caverns-95967-5b91b982a51c.herokuapp.com
 	- Icon(Optional): `<Drop an image to upload>`
 
 9. Configure the necessary environment variables:
 ```Shell
 heroku config:set API_URL=https://cad.onshape.com/api
-heroku config:set OAUTH_CALLBACK_URL=https://<url-from-heroku-create.herokuapp.com>/oauthRedirect
-heroku config:set OAUTH_CLIENT_ID=<client-id-from-created-app-in-dev-portal>
-heroku config:set OAUTH_CLIENT_SECRET=<client-secret-from-created-app-in-dev-portal>
+heroku config:set OAUTH_CALLBACK_URL=https://https://shielded-caverns-95967-5b91b982a51c.herokuapp.com/oauthRedirect
+heroku config:set OAUTH_CLIENT_ID=MXC7NV25JYGJ2TM64YOBA27IHXGLCRPAHSVTS2A=
+heroku config:set OAUTH_CLIENT_SECRET=Z5UZ5LOZSISHVM36G43WLDOKD5NKQJZA7RGC4OQTSKXGXHP5BSSQ====
 heroku config:set OAUTH_URL=https://oauth.onshape.com
-heroku config:set WEBHOOK_CALLBACK_ROOT_URL=https://<url-from-heroku-create.herokuapp.com>
-heroku config:set SESSION_SECRET=<a-cryptographically-secure-string>
+heroku config:set WEBHOOK_CALLBACK_ROOT_URL=https://shielded-caverns-95967-5b91b982a51c.herokuapp.com
+heroku config:set SESSION_SECRET=696b334ec62d47fc21213bad3d6906b906fe0d3c8c77c6391a2e2a0ec31c54cf
 ```
 10. You can confirm your configuration settings by running `heroku config`. You should see all of the above.
 11. Commit your (local) configuration changes, and push to Heroku. This will start a build process, after which your application will be up and running.
@@ -71,3 +76,10 @@ Pan | Right-click and move mouse
 * [GLTF information](https://www.khronos.org/gltf/) from Khronos Group
 * [three.js](https://threejs.org/) library to render GLTF
                      
+
+
+
+
+
+OAuth secret for ftldp5-2023
+The application's secret is Z5UZ5LOZSISHVM36G43WLDOKD5NKQJZA7RGC4OQTSKXGXHP5BSSQ==== Please transfer this securely to the external application now as you will not be able to display this string again.
