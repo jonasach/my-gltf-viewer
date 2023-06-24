@@ -12,7 +12,7 @@
 <body>
   <ol>
     <li>
-      <a href="getfileui/index.html">Get File (HTML UI)</a>
+      <a href="html/getfileui/index.html">Get File (HTML UI)</a>
     <li>
       <a href="#" class="exec" data-file="getcategories.js">Get Item Categories (Node.js command line)</a>
     <li>
@@ -30,10 +30,10 @@
   </ol>
   <table>
     <thead>Program arguments are passed as system environment variables:</thead>
-    <tr><td>API URL:<td><input id="url" type="text" value="https://labs.sand.arenasolutions.com:8061/api/v0.9/">
-    <tr><td>Email:<td><input id="email" type="text">
-    <tr><td>Password:<td><input id="password" type="password">
-    <tr><td>Workspace ID:<td><input id="workspaceID" type="text">
+    <tr><td>API URL:<td><input id="url" type="text" value="{{url}}">
+    <tr><td>Email:<td><input id="email" type="{{email}}">
+    <tr><td>Password:<td><input id="password" type="{{password}}">
+    <tr><td>Workspace ID:<td><input id="workspaceID" type="{{workspaceID}}">
     <tr><td>Log API Calls:<td><input id="log" type="checkbox">
   </table>
   <div id="source">
