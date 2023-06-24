@@ -79,3 +79,26 @@ app.get('/', (req, res) => {
 app.use('/api', require('./api'));
 
 module.exports = app;
+
+
+// ... existing code ...
+
+app.post('/login', (req, res) => {
+    // Handle the login request here
+    const username = req.body.username;
+    const password = req.body.password;
+  
+    // Perform authentication logic here
+    // ...
+  
+    // Redirect or send response based on authentication result
+    if (authenticationSuccessful) {
+      res.redirect('/'); // Redirect to the home page after successful login
+    } else {
+      res.send('Login failed'); // Send a response indicating login failure
+    }
+  });
+  
+  // ... existing code ...
+  
+  module.exports = app;
