@@ -1,0 +1,39 @@
+body {
+  margin: 20px;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  margin-bottom: 8px;
+}
+
+.message {
+  color: navy;
+  margin: 12px 0;
+}
+
+table td, table th {
+  padding: 6px 16px 0 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+input[type="text"], input[type="password"]  {
+  width: 370px;
+}
+
+input[type="button"]  {
+  margin: 0 16px;
+}
+
+.itemcat {
+  margin: 8px 8px 12px 0;
+}
+
+.nobreak {
+  white-space: nowrap;
+}
