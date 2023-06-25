@@ -58,21 +58,32 @@ passport.deserializeUser((obj, done) => done(null, obj));
 
 
 app.post('/login', (req, res) => {
-  // Handle the POST request from the client here
-  // You can access the data sent by the client using req.body
-  console.log('login')
-  // Example response
-  const response = {
-    message: 'login',
-    data: req.body
+  console.log("logging. wish me luck everyone.")
+  const apiUrl = req.body.apiUrl;
+  const email = req.body.email;
+  const password = req.body.password;
+  const workspaceId = req.body.workspaceId;
+
+  // Make the login API call using the arenaapi module
+  const args = {
+    apiUrl: apiUrl,
+    email: email,
+    password: password,
+    workspaceId: workspaceId
   };
 
-  res.send(response);
-
-  //rpc.env = function(session, params, callback) {
-  //  callback({result: process.env});
-  //};
+  arenaapi.login(args, (statusCode, errors, result) => {
+    // Handle the API response here
+    if (errors) {
+      // Handle login errors
+      res.status(statusCode).json(errors);
+    } else {
+      // Handle successful login
+      res.json(result);
+    }
+  });
 });
+
 
 app.post('/env', (req, res) => {
   console.log('env')
