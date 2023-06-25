@@ -19,17 +19,6 @@ var showResult = function(info, statusCode, errors, result) {
 };
 console.log ('          arenaapi.js:9999:20');
 
-// apiCall is a function which takes the specifics of the particular API, builds the REST call, executes it, and calls the callback when complete
-// name:     string api name for logging
-// method:   string HTTP method: GET, POST, ...
-// urlPart:  string Trailing part of REST url, depends on API call, <ARG> will be replaced by args.ARG
-// args:     map    Arguments as nam / value pairs which will be inserted into the URL as part of the path or query arguments (may be null)
-// body:     Buffer, string, or map Used for POST calls only as the POST data (may be null)
-// callback: function(statusCode, errors, result) called when the API call is complete
-//             statusCode is the integer HTTP status code
-//             errors is the map (JSON object) returned from the API call
-//             result is the map (JSON object) or Buffer returned from the API call
-
 var apiCall = function(name, method, urlPart, args, body, callback) {
   console.log ('          arenaapi.js:9999:apiCall:' +  name + ":" + method  );
   var headers = {};
@@ -122,8 +111,6 @@ var apiCall = function(name, method, urlPart, args, body, callback) {
     req.write(bodyBuffer);
   req.end();
 
-  if (exports.log)
-    console.log('--------------------------------------------\n%s %s\nheaders: %j\nbody: %s', options.method, options.path, options.headers, bodyBuffer);
 };
 
 console.log ('          arenaapi.js:9999:127');

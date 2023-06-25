@@ -29,7 +29,7 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     cookie: {
-        name: 'app-gltf-viewer',
+        name: 'shielded-caverns-95967',
         sameSite: 'none',
         secure: true,
         httpOnly: true,
