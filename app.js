@@ -116,13 +116,14 @@ rpc.setArenaAPIURL = function(session, params, callback) {
 
 arenaapi.apis.forEach(function(api) {
     if (api.method == 'POST') {
-        console.log ('          apps.js:5555:92:start the loop');
+        console.log ('          apps.js:5555:92:start the loop: ' +  api.method);
       rpc[api.name] = function(session, params, callback) {
         arenaapi[api.name](null, params, function(statusCode, errors, result) {
           callback(errors != null ? {error: 'APIERROR', errorMessage: errors.errors[0].message} : {result: result});
         });
       };
     } else {
+        console.log ('          apps.js:5555:92:start the loop: ' + api.method);
       rpc[api.name] = function(session, params, callback) {
         arenaapi[api.name](params, function(statusCode, errors, result) {
           callback(errors != null ? {error: 'APIERROR', errorMessage: errors.errors[0].message} : {result: result});
