@@ -64,7 +64,7 @@ app.post('/login', (req, res) => {
     console.log(`${key}: ${value}`);
   }
 
-  console.log("logging. wish me luck everyone.")
+  console.log("logging. wish me luck everyone for today and the rest of the way")
   const apiUrl = 'https://api.arenasolutions.com/v1/';
   const email = req.body.email;
   const password = req.body.password;
