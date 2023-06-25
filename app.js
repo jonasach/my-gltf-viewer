@@ -15,6 +15,8 @@ const app = express();
 var child = require('child_process');
 var fs = require('fs');
 
+var httpserver = require('./httpserver.js');
+var arenaapi = require('./arenaapi.js');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
