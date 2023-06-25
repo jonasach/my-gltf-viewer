@@ -2,10 +2,9 @@
   "name": "shielded-caverns-95967",
   "version": "0.1.a",
   "description": "A combination of Arena and Onshape samples.",
-  "main": "bin/www",
-  "scripts": {
-    "heroku-postbuild": "rollup -c",
-    "start":"bin/app.js"
+  "main": "bin/www",  "scripts": {
+    "start": "bin/www",
+    "heroku-postbuild": "rollup -c"
   },
   "author": "Ron Gajdos <rgajdos@ptc.com>",
   "license": "MIT",
