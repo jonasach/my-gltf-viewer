@@ -1,11 +1,12 @@
 {
-  "name": "app-gltf-viewer",
+  "name": "shielded-caverns-95967",
   "version": "0.1.0",
   "description": "A sample app to view glTF files exported from OnShape.",
   "main": "bin/www",
   "scripts": {
     "start": "bin/www",
-    "heroku-postbuild": "rollup -c"
+    "heroku-postbuild": "rollup -c",
+    "apps.js"
   },
   "author": "Ron Gajdos <rgajdos@ptc.com>",
   "license": "MIT",
@@ -29,4 +30,7 @@
     "type": "git",
     "url": "https://shielded-caverns-95967-5b91b982a51c.herokuapp.com"
   }
+
+
+
 }
