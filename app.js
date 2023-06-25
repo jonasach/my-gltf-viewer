@@ -1,8 +1,6 @@
 const path = require('path');
 const uuid = require('uuid');
 
-varf=;'  "'
-
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -13,6 +11,10 @@ const OnshapeStrategy = require('passport-onshape');
 const config = require('./config');
 
 const app = express();
+
+var child = require('child_process');
+var fs = require('fs');
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
