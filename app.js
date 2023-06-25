@@ -62,9 +62,9 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 app.post('/login', (req, res) => {
   for (const [key, value] of Object.entries(req.body)) {
     if (typeof value === 'object') {
-      console.log(`${key}: ${JSON.stringify(value)}`);
+      console.log(`object: ${key}: ${JSON.stringify(value)}`);
     } else {
-      console.log(`${key}: ${value}`);
+      console.log(`string: ${key}: ${value}`);
     }
   }
 
