@@ -18,9 +18,9 @@ const config = require('./config');
 
 const app = express();
 
-const httpserver = require('./httpserver.js');
+//const httpserver = require('./httpserver.js');
 
-const arenaapi = required('./arenaapi.js')
+//const arenaapi = required('./arenaapi.js')
 
 
 app.use(express.static(path.join(__dirname, 'public')));
