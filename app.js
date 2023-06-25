@@ -98,6 +98,7 @@ app.post('/login', (req, res) => {
     .then(response => {
       // Handle the API response here
       const responseData = response.data;
+      console.log('Response:', responseData);
       res.json(responseData);
     })
     .catch(error => {
