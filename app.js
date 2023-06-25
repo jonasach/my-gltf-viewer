@@ -56,12 +56,10 @@ passport.use(new OnshapeStrategy({
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
 
-
 app.use(express.json()); // Parse JSON data
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 
 app.post('/login', (req, res) => {
-
   for (const [key, value] of Object.entries(req.body)) {
     console.log(`${key}: ${value}`);
   }
@@ -85,7 +83,7 @@ app.post('/login', (req, res) => {
   console.log("app.js:75")
   
   arenaapi.login(args, (statusCode, errors, result) => {
-    console.log("did i go into the arena login or just misewrably fail")
+    console.log("did i go into the arena login or just miserably fail")
     // Handle the API response here
     if (errors) {
       // Handle login errors
