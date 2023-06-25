@@ -4,10 +4,12 @@ var ajaxCall = function(url, method, params, context) {
 
   
   url = "https://shielded-caverns-95967-5b91b982a51c.herokuapp.com/" + method
-/*
+
   console.log(context)
   context = context || window;
   var deferred = $.Deferred();
+
+/*
   var xhr = new XMLHttpRequest();
   xhr.open('POST', url, true);
   xhr.timeout = 0;
@@ -67,28 +69,6 @@ var payload = {
 xhr.send(JSON.stringify(payload));
 deferred.promise(xhr); // attach promise to xhr
 return xhr; // this is a promise too
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 var state = {};
