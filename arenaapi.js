@@ -20,7 +20,7 @@ var showResult = function(info, statusCode, errors, result) {
 console.log ('          arenaapi.js:9999:20');
 
 var apiCall = function(name, method, urlPart, args, body, callback) {
-  console.log ('          arenaapi.js:9999:apiCall:' +  name + ":" + method  );
+  console.log ('          arenaapi.js:9999:apiCall:' +  name + ":" + method + ":" + urlPart  + ":" + body);
   var headers = {};
   if (args != null) {
     var query = [];     // these are the query parameters
