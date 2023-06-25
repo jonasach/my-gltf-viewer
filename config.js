@@ -6,6 +6,7 @@ const oauthClientSecret = process.env.OAUTH_CLIENT_SECRET;
 const oauthUrl = process.env.OAUTH_URL;
 const sessionSecret = process.env.SESSION_SECRET;
 const webhookCallbackRootUrl = process.env.WEBHOOK_CALLBACK_ROOT_URL;
+const arena_api_url = process.env.ARENA_API_URL
 
 /**
  * Checks if the given string is a URL. A string considered a URL if it can be parsed
