@@ -62,9 +62,7 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 app.post('/login', (req, res) => {
   for (const [key, value] of Object.entries(req.body)) {
     if (typeof value === 'object') {
-      console.log(`object: ${key}: ${JSON.stringify(value)}`);
       for (const innerKey in value) {
-        console.log(`innerKey: ${innerKey}, value: ${value[innerKey]}`);
         switch (innerKey) {
           case 'email':
             email = value[innerKey];
@@ -78,15 +76,13 @@ app.post('/login', (req, res) => {
           default:
             break;
         }
-
-      }
-      
+      }     
     } else {
       console.log(`string: ${key}: ${value}`);
     }
   }
 
-
+  apiUrl = 'https://api.arenasolutions.com/v1/'
   console.log("app.js:83:" + email)
 
   // Make the login API call using the arenaapi module
