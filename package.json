@@ -1,11 +1,11 @@
 {
   "name": "shielded-caverns-95967",
-  "version": "0.1.0",
-  "description": "A sample app to view glTF files exported from OnShape.",
+  "version": "0.1.a",
+  "description": "A combination of Arena and Onshape samples.",
   "main": "bin/www",
   "scripts": {
     "heroku-postbuild": "rollup -c",
-    "start":"app.js"
+    "start":"bin/app.js"
   },
   "author": "Ron Gajdos <rgajdos@ptc.com>",
   "license": "MIT",
