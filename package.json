@@ -1,6 +1,6 @@
 {
   "name": "shielded-caverns-95967",
-  "version": "0.1.a",
+  "version": "0.1.1",
   "description": "A combination of Arena and Onshape samples.",
   "main": "bin/www",
   "scripts": {
