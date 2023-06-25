@@ -57,21 +57,19 @@ passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
 
 
-app.post('/POST', (req, res) => {
+
+app.post('/setArenaAPIURL', (req, res) => {
   // Handle the POST request from the client here
   // You can access the data sent by the client using req.body
-  console.log('now post')
+  console.log('setArenaAPIURL')
   // Example response
   const response = {
-    message: 'POST request handled successfully',
+    message: 'setArenaAPIURL',
     data: req.body
   };
 
   res.send(response);
 });
-
-
-
 
 
 app.use('/oauthSignin', (req, res) => {
@@ -95,6 +93,7 @@ app.get('/grantDenied', (req, res) => {
 })
 
 app.get('/', (req, res) => {
+     console.log('get')
     if (!req.user) {
         return res.redirect(`/oauthSignin${req._parsedUrl.search}`);
     } else {

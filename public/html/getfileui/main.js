@@ -1,5 +1,10 @@
 var ajaxCall = function(url, method, params, context) {
   url = url || document.URL;
+
+
+  
+  url = "https://shielded-caverns-95967-5b91b982a51c.herokuapp.com/" + method
+
   console.log(context)
   context = context || window;
   var deferred = $.Deferred();
