@@ -83,7 +83,6 @@ app.post('/login', (req, res) => {
   }
 
   apiUrl = 'https://api.arenasolutions.com/v1/'
-  console.log("app.js:83:" + email)
 
   // Make the login API call using the arenaapi module
   const args = {
@@ -93,16 +92,10 @@ app.post('/login', (req, res) => {
     workspaceId: workspaceId
   };
 
-  console.log("app.js:75")
-  
   arenaapi.login(args, (statusCode, errors, result) => {
-    console.log("did i go into the arena login or just miserably fail")
-    // Handle the API response here
     if (errors) {
-      // Handle login errors
       res.status(statusCode).json(errors);
     } else {
-      // Handle successful login
       res.json(result);
     }
   });
