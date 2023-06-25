@@ -65,25 +65,27 @@ app.post('/login', (req, res) => {
       console.log(`object: ${key}: ${JSON.stringify(value)}`);
       for (const innerKey in value) {
         console.log(`innerKey: ${innerKey}, value: ${value[innerKey]}`);
+        switch (innerKey) {
+          case 'email':
+            email = value[innerKey];
+            break;
+          case 'password':
+            password = value[innerKey];
+            break;
+          case 'workspaceId':
+            workspaceId = value[innerKey];
+            break;
+          default:
+            break;
+        }
+
       }
       
-
     } else {
       console.log(`string: ${key}: ${value}`);
     }
   }
 
-
-  console.log("logging. wish me luck everyone for today and the rest of the way")
-  const apiUrl = 'https://api.arenasolutions.com/v1/';
-  const email = req.body.email;
-  console.log(typeof req.body.email);
-
-  console.log("app.js:77:" + email)
-
-
-  const password = req.body.password;
-  const workspaceId = req.body.workspaceId;
 
   console.log("app.js:83:" + email)
 
