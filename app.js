@@ -63,6 +63,11 @@ app.post('/login', (req, res) => {
   for (const [key, value] of Object.entries(req.body)) {
     if (typeof value === 'object') {
       console.log(`object: ${key}: ${JSON.stringify(value)}`);
+      for (const innerKey in value) {
+        console.log(`innerKey: ${innerKey}, value: ${value[innerKey]}`);
+      }
+      
+
     } else {
       console.log(`string: ${key}: ${value}`);
     }
