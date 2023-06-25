@@ -58,8 +58,14 @@ passport.deserializeUser((obj, done) => done(null, obj));
 
 
 app.post('/login', (req, res) => {
+
+
+  for (const [key, value] of Object.entries(req.body)) {
+    console.log(`${key}: ${value}`);
+  }
+
   console.log("logging. wish me luck everyone.")
-  const apiUrl = req.body.apiUrl;
+  const apiUrl = 'https://api.arenasolutions.com/v1/';
   const email = req.body.email;
   const password = req.body.password;
   const workspaceId = req.body.workspaceId;
@@ -68,7 +74,7 @@ app.post('/login', (req, res) => {
 
   // Make the login API call using the arenaapi module
   const args = {
-    apiUrl: 'https://api.arenasolutions.com/v1/',
+    apiUrl: apiUrl,
     email: email,
     password: password,
     workspaceId: workspaceId
