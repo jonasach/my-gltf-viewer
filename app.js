@@ -90,6 +90,7 @@ app.use('/api', require('./api'));
 module.exports = app;
 
 
+/*
 arenaapi.apis.forEach(function(api) {
     if (api.method == 'POST') {
       rpc[api.name] = function(session, params, callback) {
@@ -132,3 +133,5 @@ rpc.setArenaAPIURL = function(session, params, callback) {
   arenaapi.url = params.url;
   callback({result: true});
 };
+*/
+
