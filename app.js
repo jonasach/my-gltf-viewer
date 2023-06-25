@@ -12,9 +12,9 @@ const config = require('./config');
 
 const app = express();
 
+const httpserver = require('./httpserver.js');
 
-var arenaapi = require('./arenaapi.js');
-
+const arenaapi = required('./arenaapi.js')
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -84,3 +84,22 @@ app.get('/', (req, res) => {
 app.use('/api', require('./api'));
 
 module.exports = app;
+
+
+arenaapi.apis.forEach(function(api) {
+    if (api.method == 'POST') {
+      rpc[api.name] = function(session, params, callback) {
+        arenaapi[api.name](null, params, function(statusCode, errors, result) {
+          callback(errors != null ? {error: 'APIERROR', errorMessage: errors.errors[0].message} : {result: result});
+        });
+      };
+    } else {
+      rpc[api.name] = function(session, params, callback) {
+        arenaapi[api.name](params, function(statusCode, errors, result) {
+          callback(errors != null ? {error: 'APIERROR', errorMessage: errors.errors[0].message} : {result: result});
+        });
+      };
+    }
+  });
+
+  
