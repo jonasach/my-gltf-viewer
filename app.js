@@ -12,6 +12,9 @@ const config = require('./config');
 
 const app = express();
 
+const axios = require('axios');
+
+
 var child = require('child_process');
 var fs = require('fs');
 
@@ -77,8 +80,6 @@ app.post('/login', (req, res) => {
             break;
         }
       }     
-    } else {
-      console.log(`string: ${key}: ${value}`);
     }
   }
 
@@ -92,13 +93,18 @@ app.post('/login', (req, res) => {
     workspaceId: workspaceId
   };
 
-  arenaapi.login(args, (statusCode, errors, result) => {
-    if (errors) {
-      res.status(statusCode).json(errors);
-    } else {
-      res.json(result);
-    }
-  });
+  axios
+    .post(`https://api.arenasolutions.com/v1/login`, requestData)
+    .then(response => {
+      // Handle the API response here
+      const responseData = response.data;
+      res.json(responseData);
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('An error occurred:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
 
 
