@@ -57,8 +57,10 @@ passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
 
 
-app.post('/login', (req, res) => {
+app.use(express.json()); // Parse JSON data
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 
+app.post('/login', (req, res) => {
 
   for (const [key, value] of Object.entries(req.body)) {
     console.log(`${key}: ${value}`);
