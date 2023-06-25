@@ -61,9 +61,14 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 
 app.post('/login', (req, res) => {
   for (const [key, value] of Object.entries(req.body)) {
-    console.log(`${key}: ${value}`);
+    if (typeof value === 'object') {
+      console.log(`${key}: ${JSON.stringify(value)}`);
+    } else {
+      console.log(`${key}: ${value}`);
+    }
   }
 
+  
   console.log("logging. wish me luck everyone for today and the rest of the way")
   const apiUrl = 'https://api.arenasolutions.com/v1/';
   const email = req.body.email;
