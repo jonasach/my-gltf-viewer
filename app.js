@@ -1,12 +1,3 @@
-
-//const child = require('child_process');
-//const fs = require('fs');
-
-
-
-
-
-
 const path = require('path');
 const uuid = require('uuid');
 
@@ -20,11 +11,6 @@ const OnshapeStrategy = require('passport-onshape');
 const config = require('./config');
 
 const app = express();
-
-const httpserver = require('./httpserver.js');
-
-const arenaapi = required('./arenaapi.js')
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -93,50 +79,3 @@ app.get('/', (req, res) => {
 app.use('/api', require('./api'));
 
 module.exports = app;
-
-
-/*
-arenaapi.apis.forEach(function(api) {
-    if (api.method == 'POST') {
-      rpc[api.name] = function(session, params, callback) {
-        arenaapi[api.name](null, params, function(statusCode, errors, result) {
-          callback(errors != null ? {error: 'APIERROR', errorMessage: errors.errors[0].message} : {result: result});
-        });
-      };
-    } else {
-      rpc[api.name] = function(session, params, callback) {
-        arenaapi[api.name](params, function(statusCode, errors, result) {
-          callback(errors != null ? {error: 'APIERROR', errorMessage: errors.errors[0].message} : {result: result});
-        });
-      };
-    }
-  });
-
-var rpc = {};
-
-rpc.GET = function(session, pathName, callbackGET) {
-  console.log ('server.js:8888:GET');
-  var answer = null;
-  var match = /items\/([A-Z0-9]+)\/files\/([A-Z0-9]+)\/content/.exec(pathName);
-  if (match) {
-    arenaapi.getItemFileContent({guid: match[1], fileguid: match[2]}, function(statusCode, errors, result) {
-      console.log ('server.js:8888:getItemFileContent');
-      var ans = errors != null ? new Buffer(JSON.stringify({error: 'APIERROR', errorMessage: errors.errors[0].message}), 'utf8') : result;
-      callbackGET(ans);
-    });
-  } else
-    callbackGET(null);
-};
-
-rpc.env = function(session, params, callback) {
-  console.log ('server.js:8888: env');
-  callback({result: process.env});
-};
-
-rpc.setArenaAPIURL = function(session, params, callback) {
-  console.log ('server.js:8888:setArenaAPIURL' );  
-  arenaapi.url = params.url;
-  callback({result: true});
-};
-*/
-
