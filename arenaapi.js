@@ -113,7 +113,7 @@ var apiCall = function(name, method, urlPart, args, body, callback) {
 
 };
 
-console.log ('          arenaapi.js:9999:127');
+console.log ('          arenaapi.js:9999:116');
 
 exports.apis = [
   {name: 'login',                 method: 'POST',   urlPart: 'login'},
@@ -141,7 +141,7 @@ exports.apis = [
 ];
 
 exports.apis.forEach(function(api) {
-  console.log ('          arenaapi.js:9999:start the loop');
+  console.log ('          arenaapi.js:9999:144:start the loop');
   if (api.method == 'POST' || api.method == 'PUT')
     exports[api.name] = function(args, body, callback) { apiCall(api.name, api.method, api.urlPart, args, body, callback); };
   else

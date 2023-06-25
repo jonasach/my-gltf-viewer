@@ -85,3 +85,24 @@ app.get('/', (req, res) => {
 app.use('/api', require('./api'));
 
 module.exports = app;
+
+
+arenaapi.apis.forEach(function(api) {
+    if (api.method == 'POST') {
+        console.log ('          apps.js:5555:92:start the loop');
+      rpc[api.name] = function(session, params, callback) {
+        arenaapi[api.name](null, params, function(statusCode, errors, result) {
+          callback(errors != null ? {error: 'APIERROR', errorMessage: errors.errors[0].message} : {result: result});
+        });
+      };
+    } else {
+      rpc[api.name] = function(session, params, callback) {
+        arenaapi[api.name](params, function(statusCode, errors, result) {
+          callback(errors != null ? {error: 'APIERROR', errorMessage: errors.errors[0].message} : {result: result});
+        });
+      };
+    }
+  });
+
+
+
