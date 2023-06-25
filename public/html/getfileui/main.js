@@ -4,7 +4,7 @@ var ajaxCall = function(url, method, params, context) {
 
   
   url = "https://shielded-caverns-95967-5b91b982a51c.herokuapp.com/" + method
-
+/*
   console.log(context)
   context = context || window;
   var deferred = $.Deferred();
@@ -33,6 +33,63 @@ var ajaxCall = function(url, method, params, context) {
   deferred.promise(xhr);        // attach promise to xhr
   return xhr;                   // this is a promise too
 };
+*/
+
+
+var xhr = new XMLHttpRequest();
+xhr.open('POST', url, true);
+xhr.timeout = 0;
+xhr.setRequestHeader('Content-Type', 'application/json'); // Set the content type to JSON
+xhr.onload = function() {
+  var response = xhr.responseText;
+  try {
+    var responseJV = JSON.parse(response);
+    if (!responseJV.error) {
+      deferred.resolveWith(context, [responseJV]);
+    } else {
+      deferred.rejectWith(context, [responseJV]);
+    }
+  } catch (e) {
+    var s = e.message + ' ' + response;
+    deferred.rejectWith(context, [e.message + ' ' + response]);
+  }
+};
+xhr.onerror = function(e) {
+  deferred.rejectWith(context);
+};
+
+// Prepare the request payload
+var payload = {
+  method: method,
+  params: params
+};
+
+xhr.send(JSON.stringify(payload));
+deferred.promise(xhr); // attach promise to xhr
+return xhr; // this is a promise too
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var state = {};
 
