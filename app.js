@@ -57,6 +57,40 @@ passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
 
 
+app.post('/login', (req, res) => {
+  // Handle the POST request from the client here
+  // You can access the data sent by the client using req.body
+  console.log('login')
+  // Example response
+  const response = {
+    message: 'login',
+    data: req.body
+  };
+
+  res.send(response);
+
+  //rpc.env = function(session, params, callback) {
+  //  callback({result: process.env});
+  //};
+});
+
+app.post('/env', (req, res) => {
+  // Handle the POST request from the client here
+  // You can access the data sent by the client using req.body
+  console.log('env')
+  // Example response
+  const response = {
+    message: 'env',
+    data: req.body
+  };
+
+  res.send(response);
+
+  //rpc.env = function(session, params, callback) {
+  //  callback({result: process.env});
+  //};
+});
+
 
 app.post('/setArenaAPIURL', (req, res) => {
   // Handle the POST request from the client here
@@ -64,11 +98,14 @@ app.post('/setArenaAPIURL', (req, res) => {
   console.log('setArenaAPIURL')
   // Example response
   const response = {
-    message: 'setArenaAPIURL',
+    message: '{result:true}',
     data: req.body
   };
-
   res.send(response);
+
+  //rpc.setArenaAPIURL = function(session, params, callback) {
+  //arenaapi.url = params.url;
+  //callback({result: true});
 });
 
 
