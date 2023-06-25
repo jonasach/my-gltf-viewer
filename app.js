@@ -87,6 +87,33 @@ app.use('/api', require('./api'));
 module.exports = app;
 
 
+var rpc = {};
+
+rpc.GET = function(session, pathName, callbackGET) {
+  console.log ('server.js:8888:GET');
+  var answer = null;
+  var match = /items\/([A-Z0-9]+)\/files\/([A-Z0-9]+)\/content/.exec(pathName);
+  if (match) {
+    arenaapi.getItemFileContent({guid: match[1], fileguid: match[2]}, function(statusCode, errors, result) {
+      console.log ('server.js:8888:getItemFileContent');
+      var ans = errors != null ? new Buffer(JSON.stringify({error: 'APIERROR', errorMessage: errors.errors[0].message}), 'utf8') : result;
+      callbackGET(ans);
+    });
+  } else
+    callbackGET(null);
+};
+
+rpc.env = function(session, params, callback) {
+  console.log ('server.js:8888: env');
+  callback({result: process.env});
+};
+
+rpc.setArenaAPIURL = function(session, params, callback) {
+  console.log ('server.js:8888:setArenaAPIURL' );  
+  arenaapi.url = params.url;
+  callback({result: true});
+};
+
 arenaapi.apis.forEach(function(api) {
     if (api.method == 'POST') {
         console.log ('          apps.js:5555:92:start the loop');
