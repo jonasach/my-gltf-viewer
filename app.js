@@ -90,6 +90,10 @@ app.post('/getItemCategories', (req, res) => {
 
 
 app.post('/login', (req, res) => {
+
+console.log (config.ARENA_API_URL)
+
+
   for (const [key, value] of Object.entries(req.body)) {
     if (typeof value === 'object') {
       for (const innerKey in value) {
