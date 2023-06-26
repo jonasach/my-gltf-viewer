@@ -102,16 +102,13 @@ app.post('/login', (req, res) => {
           case 'password':
             password = value[innerKey];
             break;
-          //case 'workspaceId':
-            //workspaceId = value[innerKey];
-            //break;
           default:
             break;
         }
       }     
     }
   }
-
+console.log (config.arenaapiworkspaceid)
   // Make the login API call using the arenaapi module
   const args = {
     email: email,
