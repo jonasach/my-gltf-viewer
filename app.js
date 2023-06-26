@@ -21,6 +21,9 @@ var fs = require('fs');
 var httpserver = require('./httpserver.js');
 var arenaapi = require('./arenaapi.js');
 
+
+let arenaSessionId = '';
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.json());
@@ -127,7 +130,7 @@ app.post('/login', (req, res) => {
       const responseData = response.data;
 
 
-      const arenaSessionId = responseData.arenaSessionId;
+      arenaSessionId = responseData.arenaSessionId;
       console.log (arenaSessionId)
 
 
