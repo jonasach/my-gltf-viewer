@@ -43,6 +43,7 @@ xhr.open('POST', url, true);
 xhr.timeout = 0;
 xhr.setRequestHeader('Content-Type', 'application/json'); // Set the content type to JSON
 xhr.onload = function() {
+  console.log (xhr.responseText)
   var response = xhr.responseText;
   try {
     var responseJV = JSON.parse(response);
