@@ -92,7 +92,7 @@ app.post('/getItemCategories', (req, res) => {
 app.post('/login', (req, res) => {
 
 console.log ('hello world')
-console.log(config.arena_api_url)
+console.log(config.arenaapiurl)
 
 
   for (const [key, value] of Object.entries(req.body)) {
