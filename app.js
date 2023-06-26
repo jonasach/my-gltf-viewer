@@ -91,7 +91,7 @@ app.post('/getItemCategories', (req, res) => {
 
 app.post('/login', (req, res) => {
 
-  console.log ('hello world')
+console.log ('hello world')
 console.log(config.arena_api_url)
 
 

@@ -6,7 +6,7 @@ const oauthClientSecret = process.env.OAUTH_CLIENT_SECRET;
 const oauthUrl = process.env.OAUTH_URL;
 const sessionSecret = process.env.SESSION_SECRET;
 const webhookCallbackRootUrl = process.env.WEBHOOK_CALLBACK_ROOT_URL;
-const arena_api_url = process.env.ARENA_API_URL
+const arenaapiurl = process.env.ARENA_API_URL
 
 /**
  * Checks if the given string is a URL. A string considered a URL if it can be parsed
@@ -86,6 +86,7 @@ if (!isValidHttpUrl(oauthUrl))                              errors.push('OAUTH_U
 if (!isValidString(sessionSecret))                          errors.push('SESSION_SECRET must have content');
 if (!isValidHttpUrl(webhookCallbackRootUrl))                errors.push('WEBHOOK_CALLBACK_ROOT_URL is not a valid HTTP(S) URL');
 
+
 // Halt execution if the app isn't correctly configured.
 if (errors.length !== 0) {
     throw new Error('Invalid configuration: ' + errors.join(', '));
@@ -132,5 +133,13 @@ module.exports = {
      * The URL of the webhook callback URL. This will be the `/api/event` endpoint on
      * this server, e.g. `https://your-machine.example.com`.
      */
-    webhookCallbackRootUrl
+    webhookCallbackRootUrl,
+
+
+    /**
+     * The URL of the webhook callback URL. This will be the `/api/event` endpoint on
+     * this server, e.g. `https://api.arenasolutions.com/v1/`.
+     */
+    arenaapiurl
+
 }
