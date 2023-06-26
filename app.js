@@ -125,8 +125,8 @@ app.post('/login', (req, res) => {
     .then(response => {
       // Handle the API response here
       const responseData = response.data;
-      console.log (JSON.stringify(responseData))
 
+      
       const responseObject = JSON.parse(responseData);
       const arenaSessionId = responseObject.arenaSessionId;
       console.log (arenaSessionId)
