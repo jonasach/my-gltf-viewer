@@ -68,10 +68,9 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 
 app.post('/getItemCategories', (req, res) => {
 
-  apiUrl = 'https://api.arenasolutions.com/v1/'
-
+  apiUrl = (config.arenaapiurl)  + 'settings/items/categories'
   axios
-      .get(`https://api.arenasolutions.com/v1/settings/items/categories`, {
+      .get(apiUrl , {
         headers: {
           arena_session_id: arenaSessionId
         }
@@ -135,6 +134,10 @@ app.post('/login', (req, res) => {
 
 
       res.json(responseData);
+
+
+
+
     })
     .catch(error => {
       // Handle errors
