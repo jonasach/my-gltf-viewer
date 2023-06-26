@@ -95,7 +95,7 @@ console.log('app.js:86:start of getItemCategories')
   };
 
   axios
-    .get(`https://api.arenasolutions.com/v1/item/categories`, args)
+    .get(`https://api.arenasolutions.com/v1/settings/item/categories`, args)
     .then(response => {
       // Handle the API response here
       const responseData = response.data;
