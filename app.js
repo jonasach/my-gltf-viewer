@@ -67,8 +67,6 @@ app.post('/getItemCategories', (req, res) => {
 
   apiUrl = 'https://api.arenasolutions.com/v1/'
 
-  arenaSessionId = 'LABS-qJb52vYBpioloqeZhqTMsk6VuGuvx5Sa'
-
   axios
       .get(`https://api.arenasolutions.com/v1/settings/items/categories`, {
         headers: {
