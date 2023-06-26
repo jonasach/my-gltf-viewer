@@ -120,7 +120,7 @@ console.log (config.arenaapiworkspaceid)
   };
 
   axios
-    .post( config.arenaapiurl + '/login' , args)
+    .post( config.arenaapiurl + 'login' , args)
     .then(response => {
       // Handle the API response here
       const responseData = response.data;
