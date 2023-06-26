@@ -91,9 +91,6 @@ app.post('/getItemCategories', (req, res) => {
 
 app.post('/login', (req, res) => {
 
-console.log ('hello world')
-console.log(config.arenaapiurl)
-
 
   for (const [key, value] of Object.entries(req.body)) {
     if (typeof value === 'object') {
@@ -115,18 +112,15 @@ console.log(config.arenaapiurl)
     }
   }
 
-  apiUrl = 'https://api.arenasolutions.com/v1/'
-
   // Make the login API call using the arenaapi module
   const args = {
-    apiUrl: apiUrl,
     email: email,
     password: password,
     workspaceId: workspaceId
   };
 
   axios
-    .post(`https://api.arenasolutions.com/v1/login`, args)
+    .post( config.arenaapiurl , args)
     .then(response => {
       // Handle the API response here
       const responseData = response.data;
