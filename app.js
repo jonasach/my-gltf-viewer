@@ -108,8 +108,11 @@ app.post('/login', (req, res) => {
       }     
     }
   }
+
+console.log (config.arenaapiurl) 
 console.log (config.arenaapiworkspaceid)
-  // Make the login API call using the arenaapi module
+
+// Make the login API call using the arenaapi module
   const args = {
     email: email,
     password: password,
