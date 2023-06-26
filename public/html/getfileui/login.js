@@ -20,7 +20,7 @@ var doLogin = function() {
       if (workspaceID)
         args.workspaceId = workspaceID;
       ajaxCall(null, 'login', args).then(function(result) {
-        setState({context: 'search', email: $email.val(), password: $password.val(), workspaceID: $workspaceID.val()});
+        //setState({context: 'search', email: $email.val(), password: $password.val(), workspaceID: $workspaceID.val()});
       }, function(error) {
         $message.text(JSON.stringify(error));
       });
