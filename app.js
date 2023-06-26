@@ -83,7 +83,7 @@ app.post('/getItemCategories', (req, res) => {
       }     
     }
   }
-
+console.log('app.js:86:start of getItemCategories')
   apiUrl = 'https://api.arenasolutions.com/v1/'
 
   // Make the login API call using the arenaapi module
@@ -99,6 +99,7 @@ app.post('/getItemCategories', (req, res) => {
     .then(response => {
       // Handle the API response here
       const responseData = response.data;
+      console.log(responseData);
       res.json(responseData);
     })
     .catch(error => {
