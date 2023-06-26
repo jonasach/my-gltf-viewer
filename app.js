@@ -102,9 +102,9 @@ app.post('/login', (req, res) => {
           case 'password':
             password = value[innerKey];
             break;
-          case 'workspaceId':
-            workspaceId = value[innerKey];
-            break;
+          //case 'workspaceId':
+            //workspaceId = value[innerKey];
+            //break;
           default:
             break;
         }
@@ -116,7 +116,7 @@ app.post('/login', (req, res) => {
   const args = {
     email: email,
     password: password,
-    workspaceId: workspaceId
+    workspaceId: config.arenaapiworkspaceid
   };
 
   axios
@@ -124,6 +124,7 @@ app.post('/login', (req, res) => {
     .then(response => {
       // Handle the API response here
       const responseData = response.data;
+      console.log (JSON.stringify(responseData))
       res.json(responseData);
     })
     .catch(error => {

@@ -8,9 +8,7 @@ const sessionSecret = process.env.SESSION_SECRET;
 const webhookCallbackRootUrl = process.env.WEBHOOK_CALLBACK_ROOT_URL;
 const arenaapiurl = process.env.ARENA_API_URL;
 const arenaapiworkspaceid = process.env.ARENA_API_WORKSPACEID;
-
-
-=899919167
+const arenasessionid = process.env.ARENA_SESSION_ID;
 
 /**
  * Checks if the given string is a URL. A string considered a URL if it can be parsed
@@ -147,9 +145,16 @@ module.exports = {
     arenaapiurl,
 
     /**
-     * The URL of the webhook callback URL. This will be the `/api/event` endpoint on
+     * The Arena workspaceid 
      * this server, e.g. `445411234`.
      */
-    arenaapiworkspaceid
+    arenaapiworkspaceid,
+
+
+    /**
+     * The session id from arena. retrieved during login and then used in subsequent calls.
+     * this server, e.g. `445411234`.
+     */
+    arenasessionid
 
 }
