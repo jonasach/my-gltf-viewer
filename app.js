@@ -126,6 +126,12 @@ app.post('/login', (req, res) => {
       // Handle the API response here
       const responseData = response.data;
       console.log (JSON.stringify(responseData))
+
+      const responseObject = JSON.parse(responseData);
+      const arenaSessionId = responseObject.arenaSessionId;
+      console.log (arenaSessionId)
+
+
       res.json(responseData);
     })
     .catch(error => {
