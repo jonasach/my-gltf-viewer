@@ -62,6 +62,54 @@ passport.deserializeUser((obj, done) => done(null, obj));
 app.use(express.json()); // Parse JSON data
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 
+
+app.post('/getItemCategories', (req, res) => {
+  for (const [key, value] of Object.entries(req.body)) {
+    if (typeof value === 'object') {
+      for (const innerKey in value) {
+        switch (innerKey) {
+          case 'email':
+            email = value[innerKey];
+            break;
+          case 'password':
+            password = value[innerKey];
+            break;
+          case 'workspaceId':
+            workspaceId = value[innerKey];
+            break;
+          default:
+            break;
+        }
+      }     
+    }
+  }
+
+  apiUrl = 'https://api.arenasolutions.com/v1/'
+
+  // Make the login API call using the arenaapi module
+  const args = {
+    apiUrl: apiUrl,
+    email: email,
+    password: password,
+    workspaceId: workspaceId
+  };
+
+  axios
+    .get(`https://api.arenasolutions.com/v1/getItemCategories`, args)
+    .then(response => {
+      // Handle the API response here
+      const responseData = response.data;
+      res.json(responseData);
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('An error occurred:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+});
+
+
+
 app.post('/login', (req, res) => {
   for (const [key, value] of Object.entries(req.body)) {
     if (typeof value === 'object') {
@@ -98,7 +146,6 @@ app.post('/login', (req, res) => {
     .then(response => {
       // Handle the API response here
       const responseData = response.data;
-      console.log('Response:', responseData);
       res.json(responseData);
     })
     .catch(error => {
