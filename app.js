@@ -109,18 +109,19 @@ app.post('/login', (req, res) => {
     }
   }
 
-console.log (config.arenaapiurl) 
-console.log (config.arenaapiworkspaceid)
+  apiUrl = (config.arenaapiurl) 
+  workspaceId = (config.arenaapiworkspaceid)
 
 // Make the login API call using the arenaapi module
   const args = {
+    apiUrl: apiUrl,
     email: email,
     password: password,
-    workspaceId: config.arenaapiworkspaceid
+    workspaceId: workspaceId
   };
 
   axios
-    .post( config.arenaapiurl + 'login' , args)
+    .post( apiUrl + 'login' , args)
     .then(response => {
       // Handle the API response here
       const responseData = response.data;
