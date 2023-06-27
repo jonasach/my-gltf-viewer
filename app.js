@@ -162,7 +162,6 @@ app.post('/login', (req, res) => {
   
 
 app.post('/env', (req, res) => {
-  console.log('env')
   const response = {
     message: 'env',
     data: req.body
@@ -172,7 +171,6 @@ app.post('/env', (req, res) => {
 
 
 app.post('/setArenaAPIURL', (req, res) => {
-  console.log('setArenaAPIURL')
   const response = {
     message: { result: true },
     data: req.body
@@ -182,7 +180,6 @@ app.post('/setArenaAPIURL', (req, res) => {
 
 
 app.use('/oauthSignin', (req, res) => {
-  console.log('now oauth')
     const state = {
         docId: req.query.documentId,
         workId: req.query.workspaceId,
@@ -193,7 +190,6 @@ app.use('/oauthSignin', (req, res) => {
 }, (req, res) => { /* redirected to Onshape for authentication */ });
 
 app.use('/oauthRedirect', passport.authenticate('onshape', { failureRedirect: '/grantDenied' }), (req, res) => {
-  console.log('now redirecting')
   res.redirect(`/?documentId=${req.session.state.docId}&workspaceId=${req.session.state.workId}&elementId=${req.session.state.elId}`);
 });
 
@@ -202,7 +198,6 @@ app.get('/grantDenied', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-     console.log('get')
     if (!req.user) {
         return res.redirect(`/oauthSignin${req._parsedUrl.search}`);
     } else {
@@ -244,14 +239,12 @@ rpc.setArenaAPIURL = function(session, params, callback) {
 
 arenaapi.apis.forEach(function(api) {
     if (api.method == 'POST') {
-        console.log ('          apps.js:5555:92:start the loop: ' +  api.method);
       rpc[api.name] = function(session, params, callback) {
         arenaapi[api.name](null, params, function(statusCode, errors, result) {
           callback(errors != null ? {error: 'APIERROR', errorMessage: errors.errors[0].message} : {result: result});
         });
       };
     } else {
-        console.log ('          apps.js:5555:92:start the loop: ' + api.method);
       rpc[api.name] = function(session, params, callback) {
         arenaapi[api.name](params, function(statusCode, errors, result) {
           callback(errors != null ? {error: 'APIERROR', errorMessage: errors.errors[0].message} : {result: result});
