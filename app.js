@@ -14,7 +14,6 @@ const app = express();
 
 const axios = require('axios');
 
-
 var child = require('child_process');
 var fs = require('fs');
 
@@ -67,7 +66,6 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 
 
 app.post('/getItemCategories', (req, res) => {
-
   apiUrl = (config.arenaapiurl)  + 'settings/items/categories'
   axios
       .get(apiUrl , {
@@ -77,14 +75,11 @@ app.post('/getItemCategories', (req, res) => {
       })
 
     .then(response => {
-      // Handle the API response here
-      const responseData = response.data;
-      console.log(responseData);
+      const responseData = JSON.stringify(response.data);
+      console.log (response.data)
       res.json(responseData);
     })
     .catch(error => {
-      // Handle errors
-      console.error('An error occurred:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     });
 });
@@ -92,7 +87,6 @@ app.post('/getItemCategories', (req, res) => {
 
 
 app.post('/login', (req, res) => {
-
 
   for (const [key, value] of Object.entries(req.body)) {
     if (typeof value === 'object') {
@@ -128,14 +122,10 @@ app.post('/login', (req, res) => {
       // Handle the API response here
       const responseData = response.data;
 
-
       arenaSessionId = responseData.arenaSessionId;
       console.log (arenaSessionId)
 
-
       res.json(responseData);
-
-
 
 
     })
@@ -145,7 +135,7 @@ app.post('/login', (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     });
 });
-
+  
 
 app.post('/env', (req, res) => {
   console.log('env')
