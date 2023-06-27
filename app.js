@@ -95,7 +95,6 @@ app.post('/getCategoryAttributes', (req, res) => {
      // console.log (JSON.stringify(req))
 
      for (const [key, value] of Object.entries(req.body)) {
-      if (typeof value === 'object') {
         for (const innerKey in value) {
           switch (innerKey) {
             case 'email':
@@ -106,8 +105,7 @@ app.post('/getCategoryAttributes', (req, res) => {
               break;
             default:
               break;
-          }
-        }     
+          } 
       }
     }
 
