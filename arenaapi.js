@@ -17,10 +17,8 @@ var showResult = function(info, statusCode, errors, result) {
     console.log('->%s %d %s RESULT%s\n%s', ansiBlue[0], statusCode, info, ansiBlue[1], util.inspect(result, inspectOptions));
   }
 };
-console.log ('          arenaapi.js:9999:20');
 
 var apiCall = function(name, method, urlPart, args, body, callback) {
-  console.log ('          arenaapi.js:9999:apiCall:' +  name + ":" + method + ":" + urlPart  + ":" + body);
   var headers = {};
   if (args != null) {
     var query = [];     // these are the query parameters
@@ -51,7 +49,6 @@ var apiCall = function(name, method, urlPart, args, body, callback) {
     headers['Content-Length'] = bodyBuffer.length;
   }
 
-  console.log ('          arenaapi.js:9999:apiCall:64');
 
   if (exports.sessionID != null)
     headers['Cookie'] = 'arena_session_id=' + exports.sessionID;        //needed for all but a login
@@ -67,10 +64,7 @@ var apiCall = function(name, method, urlPart, args, body, callback) {
     rejectUnauthorized: false   // no SSL cert required
   };
 
-  console.log ('          arenaapi.js:9999:76');
-
   var req = https.request(options, function(res) {
-    console.log ('          arenaapi.js:9999:83');
     var buffers = [];
     res.on('data', function(data) { buffers.push(data); });
     res.on('end', function() {
@@ -91,7 +85,6 @@ var apiCall = function(name, method, urlPart, args, body, callback) {
         errors = bufferJSON != null ? bufferJSON : {status: res.statusCode, errors: [{code: 9999, message: 'API RESPONSE ERROR', info: {method: method, url: options.path, args: args, headers: res.headers, result: buffer != null ? buffer.toString() : null}}]}; // format like API error
       }
 
-      console.log ('          arenaapi.js:9999:99');
       if (exports.log)
         showResult(options.method + ' ' + options.path + ' ' + name, res.statusCode, errors, result);
       if (errors == null && options.path.indexOf('/logout') != -1)
@@ -113,7 +106,6 @@ var apiCall = function(name, method, urlPart, args, body, callback) {
 
 };
 
-console.log ('          arenaapi.js:9999:116');
 
 exports.apis = [
   {name: 'login',                 method: 'POST',   urlPart: 'login'},

@@ -65,8 +65,29 @@ app.use(express.json()); // Parse JSON data
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 
 
+
 app.post('/getItemCategories', (req, res) => {
   apiUrl = (config.arenaapiurl)  + 'settings/items/categories'
+  axios
+      .get(apiUrl , {
+        headers: {
+          arena_session_id: arenaSessionId
+        }
+      })
+
+    .then(response => {
+      const responseData = JSON.stringify(response.data);
+      console.log (responseData)
+      res.send(responseData);
+    })
+    .catch(error => {
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+});
+
+
+app.post('/getCategoryAttributes', (req, res) => {
+  apiUrl = (config.arenaapiurl)  + 'settings/items/categories/K2M5AYPUB7Q0J2EKEGDM/attributes?includePossibleValues=true'
   axios
       .get(apiUrl , {
         headers: {
