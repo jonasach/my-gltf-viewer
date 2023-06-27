@@ -4,8 +4,6 @@ var fs = require('fs');
 var httpserver = require('./httpserver.js');
 var arenaapi = require('./arenaapi.js');
 
-console.log ('server.js:8888.10');
-
 var rpc = {};
 
 rpc.GET = function(session, pathName, callbackGET) {
@@ -14,7 +12,6 @@ rpc.GET = function(session, pathName, callbackGET) {
   var match = /items\/([A-Z0-9]+)\/files\/([A-Z0-9]+)\/content/.exec(pathName);
   if (match) {
     arenaapi.getItemFileContent({guid: match[1], fileguid: match[2]}, function(statusCode, errors, result) {
-      console.log ('server.js:8888:getItemFileContent');
       var ans = errors != null ? new Buffer(JSON.stringify({error: 'APIERROR', errorMessage: errors.errors[0].message}), 'utf8') : result;
       callbackGET(ans);
     });
@@ -23,12 +20,10 @@ rpc.GET = function(session, pathName, callbackGET) {
 };
 
 rpc.env = function(session, params, callback) {
-  console.log ('server.js:8888: env');
   callback({result: process.env});
 };
 
 rpc.setArenaAPIURL = function(session, params, callback) {
-  console.log ('server.js:8888:setArenaAPIURL' );  
   arenaapi.url = params.url;
   callback({result: true});
 };
