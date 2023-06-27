@@ -44,7 +44,8 @@ var doSearch = function() {
       $attr1.empty().append($('<option>').text(blanks(20)));
       $attr2.empty().append($('<option>').text(blanks(20)));
       $attr3.empty().append($('<option>').text(blanks(20)));
-      var attributeValues = result.result.results;
+      //var attributeValues = result.result.results;
+      var attributeValues = result.results;
       attributeValues.forEach(function(attributeValue) {
         //$attr1.append($('<option>').attr('value', attributeValue.apiName).text(attributeValue.apiName));
         //$attr2.append($('<option>').attr('value', attributeValue.apiName).text(attributeValue.apiName));
