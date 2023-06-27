@@ -76,7 +76,7 @@ app.post('/getItemCategories', (req, res) => {
 
     .then(response => {
       const responseData = JSON.stringify(response.data);
-      console.log (response.data)
+      console.log (responseData)
       res.json(responseData);
     })
     .catch(error => {
