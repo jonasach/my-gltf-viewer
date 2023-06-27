@@ -90,7 +90,22 @@ app.post('/getCategoryAttributes', (req, res) => {
 
 // need to see the guid is getting passed into the .request.
      // console.log (JSON.stringify(req))
-     console.log(req)
+     for (const [key, value] of Object.entries(req.body)) {
+      if (typeof value === 'object') {
+        for (const innerKey in value) {
+          switch (innerKey) {
+            case 'email':
+              email = value[innerKey];
+              break;
+            case 'password':
+              password = value[innerKey];
+              break;
+            default:
+              break;
+          }
+        }     
+      }
+    }
 
   apiUrl = (config.arenaapiurl)  + 'settings/items/categories/ZH1KPD49QM5FYHTZTVRH/attributes?includePossibleValues=true'
   axios
