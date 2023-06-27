@@ -24,7 +24,7 @@ var doSearch = function() {
   xhr.then(function(result) {
     $message.text('\u00a0');
     $categories.empty();
-    var categoryValues = result.result.results;
+    var categoryValues = result.results;
     categoryValues.forEach(function(categoryValue) {
       $categories.append($('<option>').attr('value', categoryValue.guid).text(categoryValue.name));
     });
