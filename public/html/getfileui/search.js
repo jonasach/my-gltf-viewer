@@ -46,12 +46,12 @@ var doSearch = function() {
       $attr3.empty().append($('<option>').text(blanks(20)));
       var attributeValues = result.result.results;
       attributeValues.forEach(function(attributeValue) {
-        $attr1.append($('<option>').attr('value', attributeValue.apiName).text(attributeValue.apiName));
-        $attr2.append($('<option>').attr('value', attributeValue.apiName).text(attributeValue.apiName));
-        $attr3.append($('<option>').attr('value', attributeValue.apiName).text(attributeValue.apiName));
-        //$attr1.append($('<option>').attr('value', attributeValue.name).text(attributeValue.name));
-        //$attr2.append($('<option>').attr('value', attributeValue.name).text(attributeValue.name));
-        //$attr3.append($('<option>').attr('value', attributeValue.name).text(attributeValue.name));
+        //$attr1.append($('<option>').attr('value', attributeValue.apiName).text(attributeValue.apiName));
+        //$attr2.append($('<option>').attr('value', attributeValue.apiName).text(attributeValue.apiName));
+        //$attr3.append($('<option>').attr('value', attributeValue.apiName).text(attributeValue.apiName));
+        $attr1.append($('<option>').attr('value', attributeValue.name).text(attributeValue.name));
+        $attr2.append($('<option>').attr('value', attributeValue.name).text(attributeValue.name));
+        $attr3.append($('<option>').attr('value', attributeValue.name).text(attributeValue.name));
 
 
         dropValues[attributeValue.name] = attributeValue.possibleValues;
