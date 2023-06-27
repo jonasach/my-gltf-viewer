@@ -96,7 +96,11 @@ app.post('/getCategoryAttributes', (req, res) => {
 
      for (const [key, value] of Object.entries(req.body)) {
         for (const innerKey in value) {
+          console.log (innerKey)
+          console.log (value[innerKey])
+          
           switch (innerKey) {
+
             case 'email':
               email = value[innerKey];
               break;
