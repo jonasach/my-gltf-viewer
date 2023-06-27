@@ -22,9 +22,7 @@ var respondHTTPError = function(response, num, msg) {
 };
 
 var handleGet = function(session, headers, pathName, response) {
-  console.log ('     httpserver.js:7777.25:handleGet');
   var filename = path.join(root, pathName);
-  console.log ('     httpserver.js:7777.27:handleGet:' +  filename);
   fs.exists(filename, function(exists) {
     if(exists) {
       fs.stat(filename, function(err, stats) {
@@ -60,7 +58,6 @@ var handleGet = function(session, headers, pathName, response) {
       });
     } else {
       if ('GET' in rpc) {
-        console.log ('     httpserver.js:7777.62:GET');
         rpc.GET(session, pathName, function(result) {
           if (result != null) {
             response.writeHead(200, {'Content-Length': result.length, 'Set-Cookie': 'sid=' + session.sid});
@@ -77,9 +74,7 @@ var handleGet = function(session, headers, pathName, response) {
 
 var handlePost = function(session, body, response) {
   try {
-    console.log ('     httpserver.js:7777.81:' +  session);
-    console.log ('     httpserver.js:7777.81:' +  body);
-    
+
     var call = JSON.parse(body);
     var method = rpc[call.method];
     var hdrs = {'Content-Type': 'application/json', 'Set-Cookie': 'sid=' + session.sid,};
@@ -87,7 +82,7 @@ var handlePost = function(session, body, response) {
     try {
       if (method === undefined)
         throw {error: 'BADMETHOD', errorMessage: call.method};
-      method(session, call.params, function(result) {
+        method(session, call.params, function(result) {
         response.writeHead(200, hdrs);
         response.write(JSON.stringify(result));
         response.end();
@@ -107,7 +102,6 @@ var server;
 var timerID;
 
 exports.httpServer = function(config) {
-  console.log ('     httpserver.js:7777.108:httpServer');
   log = config.log || 0;
   rpc = config.rpc || {};
   root = config.root || '.';
@@ -115,7 +109,6 @@ exports.httpServer = function(config) {
 
   server = http.createServer(function(request, response) {
     if (request.method == 'POST') {
-      console.log ('     httpserver.js:7777:116:POST:' + request.method);
       var body = '';
       request.on('data', function(data) {
         body += data;
@@ -123,7 +116,6 @@ exports.httpServer = function(config) {
         handlePost(getOrCreateSession(request), body, response);
       });
     } else {
-      console.log ('     httpserver.js:7777:124:GET:' +  request.method + ':' + request.url);
       var pathName = url.parse(request.url).pathname;
       handleGet(getOrCreateSession(request), request.headers, pathName, response);
     }
@@ -142,7 +134,6 @@ exports.httpServer = function(config) {
 };
 
 exports.close = function(callback) {
-  console.log ('7777.138:close' );
   clearInterval(timerID);
   var callbackTimerID = setTimeout(callback, 100);   // http keep-alive might not close so we'll run callback for sure
   server.close(function() {
@@ -156,7 +147,6 @@ var sessionExpireTimeMS = 60 * 60 * 1000; // 60 minutes
 var sessions = {};
 
 var getOrCreateSession = function(request) {
-  console.log ('     httpserver.js:7777.153:getOrCreateSession:' +  request);
   var sid = null;
   if (request.headers.cookie) {
     var match = /sid=([0-9]+)/.exec(request.headers.cookie);
@@ -173,6 +163,5 @@ var getOrCreateSession = function(request) {
     sessions[sid]['isNew'] = false;
 
   sessions[sid]['lastAccess'] = Date.now();
-  console.log ('     httpserver.js:7777:176:returning the session id');
   return sessions[sid];
 };
