@@ -68,6 +68,7 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 
 app.post('/getItemCategories', (req, res) => {
   apiUrl = (config.arenaapiurl)  + 'settings/items/categories'
+  console.log("getItemCategories")
 
   axios
       .get(apiUrl , {
@@ -88,8 +89,11 @@ app.post('/getItemCategories', (req, res) => {
 
 app.post('/getCategoryAttributes', (req, res) => {
 
+  console.log("getCategoryAttributes")
+
 // need to see the guid is getting passed into the .request.
      // console.log (JSON.stringify(req))
+
      for (const [key, value] of Object.entries(req.body)) {
       if (typeof value === 'object') {
         for (const innerKey in value) {
