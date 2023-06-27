@@ -22,6 +22,7 @@ var arenaapi = require('./arenaapi.js');
 
 
 let arenaSessionId = '';
+let guid = '';
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -65,11 +66,8 @@ app.use(express.json()); // Parse JSON data
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 
 
-
 app.post('/getItemCategories', (req, res) => {
   apiUrl = (config.arenaapiurl)  + 'settings/items/categories'
-  console.log("getItemCategories")
-
   axios
       .get(apiUrl , {
         headers: {
@@ -89,23 +87,11 @@ app.post('/getItemCategories', (req, res) => {
 
 app.post('/getCategoryAttributes', (req, res) => {
 
-  console.log("getCategoryAttributes")
-
-// need to see the guid is getting passed into the .request.
-     // console.log (JSON.stringify(req))
-
      for (const [key, value] of Object.entries(req.body)) {
         for (const innerKey in value) {
-          console.log (innerKey)
-          console.log (value[innerKey])
-          
           switch (innerKey) {
-
-            case 'email':
-              email = value[innerKey];
-              break;
-            case 'password':
-              password = value[innerKey];
+            case 'guid':
+              guid = value[innerKey];
               break;
             default:
               break;
@@ -113,7 +99,7 @@ app.post('/getCategoryAttributes', (req, res) => {
       }
     }
 
-  apiUrl = (config.arenaapiurl)  + 'settings/items/categories/ZH1KPD49QM5FYHTZTVRH/attributes?includePossibleValues=true'
+  apiUrl = (config.arenaapiurl)  + 'settings/items/categories/' + guid + '/attributes?includePossibleValues=true'
   axios
       .get(apiUrl , {
         headers: {
