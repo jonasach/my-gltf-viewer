@@ -87,7 +87,7 @@ app.post('/getItemCategories', (req, res) => {
 
 
 app.post('/getCategoryAttributes', (req, res) => {
-  apiUrl = (config.arenaapiurl)  + 'settings/items/categories/K2M5AYPUB7Q0J2EKEGDM/attributes?includePossibleValues=true'
+  apiUrl = (config.arenaapiurl)  + 'settings/items/categories/ZH1KPD49QM5FYHTZTVRH/attributes?includePossibleValues=true'
   axios
       .get(apiUrl , {
         headers: {
