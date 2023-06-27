@@ -40,7 +40,7 @@ var apiCall = function(name, method, urlPart, args, body, callback) {
       bodyBuffer = body;
       headers['Content-Type'] = 'application/octet-stream';
     } else if (typeof body == 'string') {
-      bodyBuffer = new Buffer(body, 'utf8');
+      bodyBuffer = new Buffer(body, 'utf8');  
       headers['Content-Type'] = 'text/plain';
     } else {
       bodyBuffer = new Buffer(JSON.stringify(body), 'utf8');
@@ -133,7 +133,6 @@ exports.apis = [
 ];
 
 exports.apis.forEach(function(api) {
-  console.log ('          arenaapi.js:9999:144:start the loop');
   if (api.method == 'POST' || api.method == 'PUT')
     exports[api.name] = function(args, body, callback) { apiCall(api.name, api.method, api.urlPart, args, body, callback); };
   else
